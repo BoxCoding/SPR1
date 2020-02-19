@@ -1,0 +1,85 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS `user` (
+	`user_id`	INTEGER NOT NULL,
+	`email`	VARCHAR ( 255 ) UNIQUE,
+	`username`	VARCHAR ( 255 ),
+	`password`	VARCHAR ( 255 ),
+	`active`	BOOLEAN,
+	`last_time`	DATETIME,
+	PRIMARY KEY(`id`),
+	CHECK(activeIN(0,1))
+);
+CREATE TABLE IF NOT EXISTS `roles_users` (
+	`ru_id`	INTEGER NOT NULL,
+	`user_id`	INTEGER,
+	`role_id`	INTEGER,
+	PRIMARY KEY(`ru_id`),
+	FOREIGN KEY(`user_id`) REFERENCES `user`(`user_id`),
+	FOREIGN KEY(`role_id`) REFERENCES `role`(`role_id`)
+);
+CREATE TABLE IF NOT EXISTS `role` (
+	`role_id`	INTEGER NOT NULL,
+	`name`	VARCHAR ( 80 ) UNIQUE,
+	`description`	VARCHAR ( 255 ),
+	PRIMARY KEY(`id`)
+);
+
+CREATE TABLE IF NOT EXISTS `city_master` (
+	`city_id`	INTEGER NOT NULL,
+	`city_name`	VARCHAR ( 80 ) UNIQUE,
+	`state_id`	INTEGER,
+	`created_date`	DATETIME,
+	`update_date` DATETIME
+	PRIMARY KEY(`city_id`),
+	FOREIGN KEY(`state_id`) REFERENCES `state_master`(`state_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `state_master` (
+	`state_id`	INTEGER NOT NULL,
+	`state_name`	VARCHAR ( 80 ) UNIQUE,
+	`created_date`	DATETIME,
+	`update_date` DATETIME
+	PRIMARY KEY(`state_id`)
+);
+CREATE TABLE IF NOT EXISTS `propertytype_master` (
+	`ptype_id`	INTEGER NOT NULL,
+	`ptype_name`	VARCHAR ( 80 ) UNIQUE,
+	`created_date`	DATETIME,
+	`update_date` DATETIME
+	PRIMARY KEY(`state_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `locality_master` (
+	`locality_id`	INTEGER NOT NULL,
+	`locality_name`	VARCHAR ( 80 ) UNIQUE,
+	`city_id`	INTEGER,
+	`created_date`	DATETIME,
+	`update_date` DATETIME
+	PRIMARY KEY(`locality_id`),
+	FOREIGN KEY(`city_id`) REFERENCES `city_master`(`city_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `society_master` (
+	`society_id`	INTEGER NOT NULL,
+	`society_name`	VARCHAR ( 255 ) UNIQUE,
+	`locality_id`	INTEGER,
+	`created_date`	DATETIME,
+	`update_date` DATETIME
+	PRIMARY KEY(`locality_id`),
+	FOREIGN KEY(`locality_id`) REFERENCES `locality_master`(`locality_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `amenity_master` (
+	`amenity_id`	INTEGER NOT NULL,
+	`amenity_name`	VARCHAR ( 80 ) UNIQUE,
+	`created_date`	DATETIME,
+	`update_date` DATETIME
+	PRIMARY KEY(`locality_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `logs` (
+	`id`	INTEGER NOT NULL,
+	`ip`	INTEGER,
+	`describe`	TEXT,
+	PRIMARY KEY(`id`)
+);
