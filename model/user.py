@@ -54,5 +54,5 @@ class UserModel(db.Model):
         # return user
 
     @classmethod
-    def find_by_id(cls, phone):
+    def find_by_phone(cls, phone):
         return cls.query.filter_by(phone=phone).first()

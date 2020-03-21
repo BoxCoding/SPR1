@@ -20,6 +20,7 @@ class CustomerRegistration(Resource):
     )
 
     def post(self):
+
         data=CustomerRegistration.parser.parse_args()
 
         if UserModel.find_by_email(data['email']):
