@@ -43,7 +43,6 @@ def normalize(s):
     """
     s = s.replace('&', ' and ')
     s = s.replace('@', ' at ')
-
     return s
 
 
