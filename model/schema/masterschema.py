@@ -39,8 +39,8 @@ class BuilderMaster(Schema):
     updated_date = fields.DateTime()
 
 
-"""class ProjectMaster(Schema):
+class BankMaster(Schema):
     name = fields.Str(required=True)
-    builder_master = fields.Nested(BuilderMaster,only=['name'],many=True)
     created_date = fields.DateTime()
-    updated_date = fields.DateTime()"""
+    updated_date = fields.DateTime()
+
