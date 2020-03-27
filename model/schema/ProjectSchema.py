@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields
-from model.schema.masterschema import LocalityMaster,CityMaster,StateMaster,PropertyType,AmenityMaster,BankMaster
+from model.schema.masterschema import LocalityMaster, PropertyType,AmenityMaster,BankMaster
 from model.schema.Address import AddressSchema
 from model.schema.BuilderSchema import BuilderSchema
 from model.schema.Specification_master import SpecificationSchema
@@ -26,6 +26,10 @@ class ProjectSchema(Schema):
     construction_date = fields.Date()
     possession_on = fields.Date()
     construction_status = fields.String(default="Ready to Move")
+    booking_percent = fields.Float(default=0, required=True)
+    handover_period = fields.Integer(default=45)
+    payment_plan = fields.List(fields.String())
+    payment_time = fields.Integer()
     near_by = fields.List(fields.String())
     created_date = fields.DateTime()
     updated_date = fields.DateTime()
