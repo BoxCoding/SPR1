@@ -1,4 +1,6 @@
 from marshmallow import Schema, fields
+from datetime import datetime
+
 
 
 class StateMaster(Schema):
@@ -97,4 +99,20 @@ class ReligionMaster(Schema):
     name = fields.String(required=True)
     created_date = fields.DateTime()
     updated_date = fields.DateTime()
+
+
+class FurnishingMaster(Schema):
+    name = fields.String(required=True)
+    created_date = fields.DateTime()
+    updated_date = fields.DateTime()
+
+
+
+
+class UsertypeMaster(Schema):
+    name = fields.String(required=True)
+    created_date = fields.DateTime()
+    updated_date = fields.DateTime()
+
+
 

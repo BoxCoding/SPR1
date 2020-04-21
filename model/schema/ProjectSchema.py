@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields
-from model.schema.masterschema import LocalityMaster, PropertyType,AmenityMaster,BankMaster
+from model.schema.masterschema import LocalityMaster, PropertyType, AmenityMaster, BankMaster, FurnishingMaster
 from model.schema.Address import AddressSchema
 from model.schema.BuilderSchema import BuilderSchema
 from model.schema.Specification_master import SpecificationSchema
@@ -20,6 +20,8 @@ class ProjectSchema(Schema):
     project_area = fields.Float(default=None)
     approved_by = fields.Nested(BankMaster,only=['name'],many=True)
     specifications = fields.Nested(SpecificationSchema, many=True)
+    furnishing_status = fields.Nested(FurnishingMaster, only=['name'], default='Unfurnished', many=True)
+
     project_highlights = fields.List(fields.String())
     project_usp = fields.List(fields.String())
     amenities = fields.Nested(AmenityMaster, only=['name'], many=True)

@@ -1,3 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_mongoalchemy import MongoAlchemy
+#from app import app
 
-db=SQLAlchemy()
+db=MongoAlchemy()

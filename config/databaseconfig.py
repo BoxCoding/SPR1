@@ -1,0 +1,1 @@
+MONGO_URI="mongodb+srv://boxcodingtech:Motoe#1234@spr-0vq0j.gcp.mongodb.net/test?retryWrites=true&w=majority"
