@@ -17,3 +17,4 @@ Werkzeug==0.14.1
 flask-marshmallow==0.11.0
 Flask-MongoAlchemy==0.7.2
 umongo
+flask_swagger_ui
